@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
+import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import {RouterTestingModule} from "@angular/router/testing";
 
@@ -22,4 +22,18 @@ describe('HomePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  describe('logout button', () => {
+    let button: HTMLIonButtonElement;
+    beforeEach(() => {
+      button = fixture.nativeElement.querySelector('[test="logout-button"]');     
+      fixture.detectChanges();
+      // tick();
+    });
+    it('calls handeLogin on click', fakeAsync(() => {
+      const loginSpy = spyOn(component, 'handleLogout');
+      button.click()
+      tick()
+      expect(loginSpy).toHaveBeenCalledTimes(1);
+    }))
+  })
 });

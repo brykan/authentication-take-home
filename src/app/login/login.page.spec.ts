@@ -37,12 +37,11 @@ describe('LoginPage', () => {
       fixture.detectChanges();
       // tick();
     });
-    it('navigates to home on click', fakeAsync(() => {
+    it('calls handeLogin on click', fakeAsync(() => {
       const loginSpy = spyOn(component, 'handleLogin');
       button.click()
       tick()
       expect(loginSpy).toHaveBeenCalledTimes(1);
-
     }))
   })
 });
