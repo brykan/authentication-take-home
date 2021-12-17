@@ -32,23 +32,17 @@ describe('LoginPage', () => {
   });
   describe('login button', () => {
     let button: HTMLIonButtonElement;
-    beforeEach(fakeAsync(() => {
-      button = fixture.nativeElement.querySelector('[test="login-button"]');
-      
+    beforeEach(() => {
+      button = fixture.nativeElement.querySelector('[test="login-button"]');     
       fixture.detectChanges();
-      tick();
-
-    }));
-    it('navigates to home on click', () => {
+      // tick();
+    });
+    it('navigates to home on click', fakeAsync(() => {
       const loginSpy = spyOn(component, 'handleLogin');
-      click(button);
+      button.click()
+      tick()
       expect(loginSpy).toHaveBeenCalledTimes(1);
-    })
+
+    }))
   })
-  
-const click = (button: HTMLElement) => {
-  const event = new Event('click');
-  button.dispatchEvent(event);
-  fixture.detectChanges();
-};
 });
