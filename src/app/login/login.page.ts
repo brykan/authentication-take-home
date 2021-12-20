@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '../services/authentication/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -9,14 +10,21 @@ import { Router } from '@angular/router';
 export class LoginPage implements OnInit {
 
   constructor(
-    private router: Router) { 
+    private router: Router,
+    private auth: AuthenticationService) {
 
   }
 
   ngOnInit() {
   }
 
-  handleLogin(){
-    this.router.navigate(['/home'])
+  async handleLogin(){
+    await this.auth.login();
+    const token = await this.auth.getIdToken();
+    if(token) {
+      this.router.navigate(['/home']);
+    }else{
+      console.log('failed to log in');
+    }
   }
 }

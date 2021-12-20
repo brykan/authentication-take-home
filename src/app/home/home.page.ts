@@ -13,6 +13,6 @@ export class HomePage {
 
   }
   handleLogout(){
-    this.router.navigate(['/'])
+    this.router.navigate(['/']);
   }
 }

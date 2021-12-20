@@ -1,0 +1,6 @@
+{
+	"appId": "com.training.authentication",
+	"appName": "authentication-take-home",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

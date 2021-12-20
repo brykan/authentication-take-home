@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { ComponentFixture, fakeAsync, TestBed, tick, waitForAsync } from '@angular/core/testing';
 import { Router } from '@angular/router';
-import {RouterTestingModule} from "@angular/router/testing";
+import {RouterTestingModule} from '@angular/router/testing';
 
 import { IonicModule } from '@ionic/angular';
 
@@ -33,15 +33,15 @@ describe('LoginPage', () => {
   describe('login button', () => {
     let button: HTMLIonButtonElement;
     beforeEach(() => {
-      button = fixture.nativeElement.querySelector('[test="login-button"]');     
+      button = fixture.nativeElement.querySelector('[test="login-button"]');
       fixture.detectChanges();
       // tick();
     });
     it('calls handeLogin on click', fakeAsync(() => {
       const loginSpy = spyOn(component, 'handleLogin');
-      button.click()
-      tick()
+      button.click();
+      tick();
       expect(loginSpy).toHaveBeenCalledTimes(1);
-    }))
-  })
+    }));
+  });
 });
